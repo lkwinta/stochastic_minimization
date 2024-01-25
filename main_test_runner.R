@@ -5,6 +5,12 @@ source("genetic_algorithm.R")
 library(vioplot)
 
 N <- 50
+dimensions <- list(2, 10, 20)
+
+functions <- list(
+  makeAckleyFunction,
+  makeRosenbrockFunction
+)
 
 test_function <- function(smoof_function) {
   function_name <- getName(smoof_function)
@@ -14,60 +20,95 @@ test_function <- function(smoof_function) {
   prs_results <- get_average_result_prs(smoof_function, budget, N)
   ga_results <- get_average_result_ga(smoof_function, budget, N)
   
-  boxplot(ms_results$data, prs_results$data, ga_results$data, 
-          names=c("Multi-start", "Pure random search", "Genetic algorithm"),
-          main=sprintf("Comparison of algorithms: %s", function_name),
+  # -------------- BOX PLOTS --------------
+  png(file=sprintf("plots/boxplot/multi_start/%s.png", function_name), width=450, height=600)
+  boxplot(ms_results$data, names="Multi-start",
+          main=sprintf("Multi-start: %s", function_name),
           ylab="Minimum function value",
-          col=c("red", "green", "blue"))
+          col="red")
+  dev.off()
   
-  vioplot(ms_results$data, prs_results$data, ga_results$data, 
-          names=c("Multi-start", "Pure random search", "Genetic algorithm"),
-          main=sprintf("Comparison of algorithms: %s", function_name),
+  png(file=sprintf("plots/boxplot/pure_random_search/%s.png", function_name), width=450, height=600)
+  boxplot(prs_results$data, names="Pure random search",
+          main=sprintf("Pure random search: %s", function_name),
           ylab="Minimum function value",
-          col=c("red", "green", "blue"))
+          col="green")
+  dev.off()
   
+  png(file=sprintf("plots/boxplot/genetic_algorithm/%s.png", function_name), width=450, height=600)
+  boxplot(ga_results$data, names="Genetic algorithm",
+          main=sprintf("Pure random search: %s", function_name),
+          ylab="Minimum function value",
+          col="blue")
+  dev.off()
+  
+  # -------------- VIOLIN PLOTS --------------
+  png(file=sprintf("plots/violin/multi_start/%s.png", function_name), width=450, height=600)
+  vioplot(ms_results$data, names="Multi-start",
+          main=sprintf("Multi-start: %s", function_name),
+          ylab="Minimum function value",
+          col="red")
+  dev.off()
+  
+  png(file=sprintf("plots/violin/pure_random_search/%s.png", function_name), width=450, height=600)
+  vioplot(prs_results$data, names="Pure random search",
+          main=sprintf("Pure random search: %s", function_name),
+          ylab="Minimum function value",
+          col="green")
+  dev.off()
+  
+  png(file=sprintf("plots/violin/genetic_algorithm/%s.png", function_name), width=450, height=600)
+  vioplot(ga_results$data, names="Genetic algorithm",
+          main=sprintf("Pure random search: %s", function_name),
+          ylab="Minimum function value",
+          col="blue")
+  dev.off()
+  
+  # -------------- HISTOGRAMS --------------
+  png(file=sprintf("plots/multi_start/%s.png", function_name), width=800, height=600)
   hist(ms_results$data, breaks=20, col="red", 
        main=sprintf("Multi-start: %s", function_name), xlab="Minimum function value")
+  dev.off()
   
+  png(file=sprintf("plots/pure_random_search/%s.png", function_name), width=800, height=600)
   hist(prs_results$data, breaks=20, col="green", 
        main=sprintf("Pure random search: %s", function_name), xlab="Minimum function value")
+  dev.off()
   
+  png(file=sprintf("plots/genetic_algorithm/%s.png", function_name), width=800, height=600)
   hist(ga_results$data, breaks=20, col="blue",
        main=sprintf("Genetic algorithm: %s", function_name), xlab="Minimum function value")
+  dev.off()
   
-  return (c("ms"=ms_results$mean, "prs"=prs_results$mean, "ga"=ga_results$mean))
+  return (list(
+    "optimization_results" = c("ms"=ms_results$mean, "prs"=prs_results$mean, "ga"=ga_results$mean),
+    "budget" = budget,
+    "data" = list(
+      "ms" = ms_results$data,
+      "prs" = prs_results$data,
+      "ga" = ga_results$data
+    )))
 }
 
 main <- function() {
-  ackley_function2D = makeAckleyFunction(dimensions = 2)
-  ackley_function10D = makeAckleyFunction(dimensions = 10)
-  ackley_function20D = makeAckleyFunction(dimensions = 20)
   
-  ackley2D_results <- test_function(ackley_function2D)
-  ackley10D_results <- test_function(ackley_function10D)
-  ackley20D_results <- test_function(ackley_function20D)
-  
-  michalewicz_function2D = makeMichalewiczFunction(dimensions = 2)
-  michalewicz_function10D = makeMichalewiczFunction(dimensions = 10)
-  michalewicz_function20D = makeMichalewiczFunction(dimensions = 20)
-  
-  michalewicz2D_results <- test_function(michalewicz_function2D)
-  michalewicz10D_results <- test_function(michalewicz_function10D)
-  michalewicz20D_results <- test_function(michalewicz_function20D)
-
-  print("Ackley function 2D")
-  print(ackley2D_results)
-  print("Ackley function 10D")
-  print(ackley10D_results)
-  print("Ackley function 20D")
-  print(ackley20D_results)
-  
-  print("Michalewicz function 2D")
-  print(michalewicz2D_results)
-  print("Michalewicz function 10D")
-  print(michalewicz10D_results)
-  print("Michalewicz function 20D")
-  print(michalewicz20D_results)
+  for(func in functions) {
+    for(dim in dimensions) {
+      smoof_function <- func(dimensions = dim)
+      results <- test_function(smoof_function)
+      
+      print(sprintf("-------- %s --------", getName(smoof_function)))
+      print(results$optimization_results)
+      print(results$budget)
+      
+      print("comparison MS-PRS")
+      print(t.test(results$data$ms, results$data$prs))
+      print("comparison MS-GA")
+      print(t.test(results$data$ms, results$data$ga))
+      print("comparison PRS-GA")
+      print(t.test(results$data$prs, results$data$ga))
+    }
+  }
 }
 
 main()

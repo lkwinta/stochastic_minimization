@@ -1,1 +1,138 @@
-# Poszukiwanie przypadkowe
+---
+title: "Problem stochastycznej minimalizacji wartości funkcji"
+author:
+  - "Ida Ciepiela"
+  - "Łukasz Kwinta"
+---
+# Wstęp
+
+## Omówienie algorytmów
+
+### Poszukiwanie przypadkowe (Pure Random Search - PRS)
+
+Algorytm polega na losowaniu punktów z kostki z rozkładu jednostajnego. Po kolei losuję punkty dla każdej współrzędnej z wymiaru dziedziny analizowanej funkcji. Następnie obliczam wartość funkcji w wylosowanym punkcie i sprawdzam czy jest ona mniejsza od dotychczasowego minimum. Jeśli tak, to zapisuję nowe minimum. Do losowania punktów użyłem funkcji `runif` - dostępnej w środowisku R.
+
+### Metoda wielokrotnego startu (Multi-Start - MS)
+
+Algorytm polega na wielokrotnym uruchamianiu algorytmu optymalizacji z różnych punktów startowych. W naszym przypadku skorzystałem z funkcji `optim` ze środowiska R ustawiając ją aby korzystała z algorytmu `L-BFGS-B`. Punkty startowe losuję tak jak poprzednio za pomocą funkcji `runif`.
+
+### Algorytm Genetyczny (GA)
+
+Do przetestowania tego algorytmu użyłem implementacji z pakietu `ecr` . Do mutowania populacji używałem algorytmu mutowania Gaussa, z odchyleniem standardowym $\sigma = 1.5$. Jako startową liczbę populacji wybrałem `100`, a wzrost jako `5`.
+
+## Warunki porównania
+
+Aby porównanie było sprawiedliwe, budżet wywołań funkcji ustawiałem na podstawie ilości wywołań funkcji testowanej w algorytmie MS. Uruchamiałem algorytm `100` razy szukając minimalnej wartości funkcji, jednocześnie sumując liczbę wywołań funkcji przez funkcję `optim`.
+
+Wynik każdego z algorytmów uśredniałem, wykonując `50` powtórzeń algorytmu. Zbiór wartości minimalnych wytworzony w ten sposób stanowił następnie podstawę do analizy istotności wyników, sporządzenia wykresów oraz porównania wyników algorytmów.
+
+## Testowane funkcje
+Jako testowane funkcje wybrałem funkcje z pakietu `smoof`: Ackley'a oraz Rosenbrock'a Funkcje te są funkcjami wielowymiarowymi, co pozwala na przetestowanie algorytmów dla różnych wymiarów dziedziny funkcji. Wybrane do testów
+wymiary funkcji to `2, 10, 20`.
+
+# Wyniki
+
+Do prezentacji wyników wybrałem wykresy skrzypcowe. Wykresy te pozwalają na łatwe porównanie rozkładów wartości minimalnych funkcji dla każdego z algorytmów. Pod wykresami zawarłem opisy z uzyskanymi wartościami średnimi.
+
+## Funkcja Ackley'a
+
+### Funkcja Ackley'a 2D
+
+Budżet określony przez funkcję MS wyniósł `1380` wywołań funkcji.  
+
+<table>
+<tr>
+  <td> <img src="plots/violin/multi_start/2-d Ackley Function.png"/> </td>
+  <td> <img src="plots/violin/pure_random_search/2-d Ackley Function.png"/> </td>
+  <td> <img src="plots/violin/genetic_algorithm/2-d Ackley Function.png"/> </td>
+</tr>
+<tr>
+  <td> <center> $\mu = 1.5934$ </center> </td> 
+  <td> <center> $\mu = 3.9976$ </center> </td> 
+  <td> <center> $\mu = 0.0051$ </center> </td> 
+</tr>
+</table>
+
+### Funkcja Ackley'a 10D
+
+Budżet określony przez funkcję MS wyniósł `1453` wywołań funkcji.  
+
+<table>
+<tr>
+  <td> <img src="plots/violin/multi_start/10-d Ackley Function.png"/> </td>
+  <td> <img src="plots/violin/pure_random_search/10-d Ackley Function.png"/> </td>
+  <td> <img src="plots/violin/genetic_algorithm/10-d Ackley Function.png"/> </td>
+</tr>
+<tr>
+  <td> <center> $\mu = 17.8595$ </center> </td> 
+  <td> <center> $\mu = 18.0632$ </center> </td> 
+  <td> <center> $\mu = 3.14070$ </center> </td> 
+</tr>
+</table>
+
+### Funkcja Ackley'a 20D
+
+Budżet określony przez funkcję MS wyniósł `1425` wywołań funkcji.  
+
+<table>
+<tr>
+  <td> <img src="plots/violin/multi_start/20-d Ackley Function.png"/> </td>
+  <td> <img src="plots/violin/pure_random_search/20-d Ackley Function.png"/> </td>
+  <td> <img src="plots/violin/genetic_algorithm/20-d Ackley Function.png"/> </td>
+</tr>
+<tr>
+  <td> <center> $\mu = 18.7025$ </center> </td> 
+  <td> <center> $\mu = 19.8260$ </center> </td> 
+  <td> <center> $\mu = 4.93818$ </center> </td> 
+</tr>
+</table>
+
+## Funkcja Michalewicza
+
+### Funkcja Michalewicza 2D
+Budżet określony przez funkcję MS wyniósł `1213` wywołań funkcji.  
+
+<table>
+<tr>
+  <td> <img src="plots/violin/multi_start/2-d Michalewicz Function (m = 10).png"/> </td>
+  <td> <img src="plots/violin/pure_random_search/2-d Michalewicz Function (m = 10).png"/> </td>
+  <td> <img src="plots/violin/genetic_algorithm/2-d Michalewicz Function (m = 10).png"/> </td>
+</tr>
+<tr>
+  <td> <center> $\mu = -1.8013$ </center> </td> 
+  <td> <center> $\mu = -1.7357$ </center> </td> 
+  <td> <center> $\mu = -1.8011$ </center> </td> 
+</tr>
+</table>
+
+### Funkcja Michalewicza 10D
+Budżet określony przez funkcję MS wyniósł `4849` wywołań funkcji.  
+
+<table>
+<tr>
+  <td> <img src="plots/violin/multi_start/10-d Michalewicz Function (m = 10).png"/> </td>
+  <td> <img src="plots/violin/pure_random_search/10-d Michalewicz Function (m = 10).png"/> </td>
+  <td> <img src="plots/violin/genetic_algorithm/10-d Michalewicz Function (m = 10).png"/> </td>
+</tr>
+<tr>
+  <td> <center> $\mu = -7.0677$ </center> </td> 
+  <td> <center> $\mu = -4.4816$ </center> </td> 
+  <td> <center> $\mu = -5.0698$ </center> </td> 
+</tr>
+</table>
+
+### Funkcja Michalewicza 20D
+Budżet określony przez funkcję MS wyniósł `6498` wywołań funkcji.  
+
+<table>
+<tr>
+  <td> <img src="plots/violin/multi_start/20-d Michalewicz Function (m = 10).png"/> </td>
+  <td> <img src="plots/violin/pure_random_search/20-d Michalewicz Function (m = 10).png"/> </td>
+  <td> <img src="plots/violin/genetic_algorithm/20-d Michalewicz Function (m = 10).png"/> </td>
+</tr>
+<tr>
+  <td> <center> $\mu = -11.1719$ </center> </td> 
+  <td> <center> $\mu = -6.8647$ </center> </td> 
+  <td> <center> $\mu = -7.3865$ </center> </td> 
+</tr>
+</table>
