@@ -4,6 +4,7 @@ author:
   - "Ida Ciepiela"
   - "Łukasz Kwinta"
 ---
+
 # Wstęp
 
 ## Omówienie algorytmów
@@ -27,8 +28,8 @@ Aby porównanie było sprawiedliwe, budżet wywołań funkcji ustawiałem na pod
 Wynik każdego z algorytmów uśredniałem, wykonując `50` powtórzeń algorytmu. Zbiór wartości minimalnych wytworzony w ten sposób stanowił następnie podstawę do analizy istotności wyników, sporządzenia wykresów oraz porównania wyników algorytmów.
 
 ## Testowane funkcje
-Jako testowane funkcje wybrałem funkcje z pakietu `smoof`: Ackley'a oraz Rosenbrock'a Funkcje te są funkcjami wielowymiarowymi, co pozwala na przetestowanie algorytmów dla różnych wymiarów dziedziny funkcji. Wybrane do testów
-wymiary funkcji to `2, 10, 20`.
+
+Jako testowane funkcje wybrałem funkcje z pakietu `smoof`: Ackley'a oraz Rosenbrock'a Funkcje te są funkcjami wielowymiarowymi, co pozwala na przetestowanie algorytmów dla różnych wymiarów dziedziny funkcji. Wybrane do testów wymiary funkcji to `2, 10, 20`.
 
 # Wyniki
 
@@ -38,113 +39,139 @@ Do prezentacji wyników wybrałem wykresy skrzypcowe. Wykresy te pozwalają na �
 
 ### Funkcja Ackley'a 2D
 
-Budżet określony przez funkcję MS wyniósł `1380` wywołań funkcji.  
+Budżet określony przez funkcję MS wyniósł `1380` wywołań funkcji.
 
-<table>
-<tr>
-  <td> <img src="plots/violin/multi_start/2-d Ackley Function.png"/> </td>
-  <td> <img src="plots/violin/pure_random_search/2-d Ackley Function.png"/> </td>
-  <td> <img src="plots/violin/genetic_algorithm/2-d Ackley Function.png"/> </td>
-</tr>
-<tr>
-  <td> <center> $\mu = 1.5934$ </center> </td> 
-  <td> <center> $\mu = 3.9976$ </center> </td> 
-  <td> <center> $\mu = 0.0051$ </center> </td> 
-</tr>
-</table>
+![](plots/multi_start/2-d Ackley Function.png){width="800"}
 
-![](plots/violin/2-d Ackley Function.png)
+![](plots/pure_random_search/2-d Ackley Function.png)
+
+![](plots/genetic_algorithm/2-d Ackley Function.png)
+
+|                                                           |                                                                  |                                                                 |
+|-----------------------|-------------------------|-------------------------|
+| ![](plots/violin/multi_start/2-d%20Ackley%20Function.png) | ![](plots/violin/pure_random_search/2-d%20Ackley%20Function.png) | ![](plots/violin/genetic_algorithm/2-d%20Ackley%20Function.png) |
+| $\mu$ = 1.5934                                            | $\mu$ = 3.9976                                                   | $\mu$ = 0.0051                                                  |
+
+![](plots/violin/2-d%20Ackley%20Function.png)
+
+Analizując wykresy, zauważamy, że zarówno metoda wielokrotnego startu, jak i algorytm genetyczny, wykazują wyniki, które są bardziej zbliżone do zera, a mediana jest utrzymana na poziomie 0. W porównaniu do dwóch pozostałych metod, algorytm genetyczny wyróżnia się tym, że wyniki są skoncentrowane w wąskim obszarze, co sugeruje pewną stabilność i spójność osiąganych rezultatów.
+
+Natomiast metoda wielokrotnego startu również prezentuje zbliżone wyniki do zera, ale ich rozproszenie może być bardziej zróżnicowane, co może oznaczać większą różnorodność w rezultatach tej metody. Warto zwrócić uwagę, że obie metody wykazują podobne położenie mediany na poziomie 0.
+
+Rozpatrując metody pod kątem położenia i rozproszenia wyników, możemy również zauważyć, że metoda poszukiwania przypadkowego prezentuje najbardziej równomierne rozłożenie wyników. Tutaj wyniki są bardziej rozproszone, co może wskazywać na większą losowość i różnorodność w rezultatach tej metody, w przeciwieństwie do bardziej skondensowanych wyników algorytmu genetycznego.
 
 ### Funkcja Ackley'a 10D
 
-Budżet określony przez funkcję MS wyniósł `1453` wywołań funkcji.  
+Budżet określony przez funkcję MS wyniósł `1453` wywołań funkcji.
 
-<table>
-<tr>
-  <td> <img src="plots/violin/multi_start/10-d Ackley Function.png"/> </td>
-  <td> <img src="plots/violin/pure_random_search/10-d Ackley Function.png"/> </td>
-  <td> <img src="plots/violin/genetic_algorithm/10-d Ackley Function.png"/> </td>
-</tr>
-<tr>
-  <td> <center> $\mu = 17.8595$ </center> </td> 
-  <td> <center> $\mu = 18.0632$ </center> </td> 
-  <td> <center> $\mu = 3.14070$ </center> </td> 
-</tr>
-</table>
+![](plots/multi_start/10-d Ackley Function.png)
 
-![](plots/violin/10-d Ackley Function.png)
+![](plots/pure_random_search/10-d Ackley Function.png)
+
+![](plots/genetic_algorithm/10-d Ackley Function.png)
+
+|                                                            |                                                                   |                                                                  |
+|-----------------------|-------------------------|-------------------------|
+| ![](plots/violin/multi_start/10-d%20Ackley%20Function.png) | ![](plots/violin/pure_random_search/10-d%20Ackley%20Function.png) | ![](plots/violin/genetic_algorithm/10-d%20Ackley%20Function.png) |
+| $\mu$ = 17.8595                                            | $\mu$ = 18.0632                                                   | $\mu$ = 3.14070                                                  |
+
+![](plots/violin/10-d%20Ackley%20Function.png)
+
+Analizując wykres, zwraca uwagę, że obszar wyników metody wielokrotnego startu i metody poszukiwania przypadkowego jest częściowo wspólny, jednak ten pierwszy wykazuje większą koncentrację, co sugeruje pewną stabilność w rezultatach. Obydwie metody mają również medianę utrzymaną na tym samym poziomie, co podkreśla podobieństwo średnich wyników.
+
+Natomiast algorytm genetyczny wyróżnia się znacznie odmiennym położeniem i rozmiarem obszaru wyników. Jego skondensowany obszar oznacza, że rezultaty są bardziej jednorodne, a osiągane wartości są istotnie mniejsze niż w przypadku pozostałych metod.
+
+Dodatkowo, zauważamy, że metoda poszukiwania przypadkowego prezentuje się jako bardziej losowe podejście, charakteryzując się równomiernym rozkładem wyników na wykresie. To może sugerować większą różnorodność w rezultatach, co kontrastuje z bardziej skoncentrowanymi wynikami metody wielokrotnego startu.
 
 ### Funkcja Ackley'a 20D
 
-Budżet określony przez funkcję MS wyniósł `1425` wywołań funkcji.  
+Budżet określony przez funkcję MS wyniósł `1425` wywołań funkcji.
 
-<table>
-<tr>
-  <td> <img src="plots/violin/multi_start/20-d Ackley Function.png"/> </td>
-  <td> <img src="plots/violin/pure_random_search/20-d Ackley Function.png"/> </td>
-  <td> <img src="plots/violin/genetic_algorithm/20-d Ackley Function.png"/> </td>
-</tr>
-<tr>
-  <td> <center> $\mu = 18.7025$ </center> </td> 
-  <td> <center> $\mu = 19.8260$ </center> </td> 
-  <td> <center> $\mu = 4.93818$ </center> </td> 
-</tr>
-</table>
+![](plots/multi_start/20-d Ackley Function.png)
 
-![](plots/violin/20-d Ackley Function.png)
+![](plots/pure_random_search/20-d Ackley Function.png)
+
+![](plots/genetic_algorithm/20-d Ackley Function.png)
+
+|                                                            |                                                                   |                                                                  |
+|-----------------------|-------------------------|-------------------------|
+| ![](plots/violin/multi_start/20-d%20Ackley%20Function.png) | ![](plots/violin/pure_random_search/20-d%20Ackley%20Function.png) | ![](plots/violin/genetic_algorithm/20-d%20Ackley%20Function.png) |
+| $\mu$ = 18.7025                                            | $\mu$ = 19.8260                                                   | $\mu$ = 4.93818                                                  |
+
+![](plots/violin/20-d%20Ackley%20Function.png)
+
+\
+Obserwując wykres, zauważamy, że algorytm genetyczny wyróżnia się najszerszym obszarem wyników jak i najbardziej równomiernym ich rozkładem. Co istotne, osiągane przez ten algorytm wartości są istotnie mniejsze w porównaniu do pozostałych dwóch metod. To nadaje mu unikalny charakter i sugeruje, że rezultaty są bardziej zróżnicowane, a jednocześnie utrzymują niższe wartości.
+
+W przypadku metody wielokrotnego startu i metody przeszukiwania, zauważamy pewne pokrywanie się obszarów wyników, choć nie jest to zbyt znaczące. Obydwie metody prezentują rozkład wartości stosunkowo równomierny, jednak ich wyniki są nieco przesunięte w stronę górnej granicy obszaru.
 
 ## Funkcja Michalewicza
 
 ### Funkcja Michalewicza 2D
-Budżet określony przez funkcję MS wyniósł `1213` wywołań funkcji.  
 
-<table>
-<tr>
-  <td> <img src="plots/violin/multi_start/2-d Michalewicz Function (m = 10).png"/> </td>
-  <td> <img src="plots/violin/pure_random_search/2-d Michalewicz Function (m = 10).png"/> </td>
-  <td> <img src="plots/violin/genetic_algorithm/2-d Michalewicz Function (m = 10).png"/> </td>
-</tr>
-<tr>
-  <td> <center> $\mu = -1.8013$ </center> </td> 
-  <td> <center> $\mu = -1.7357$ </center> </td> 
-  <td> <center> $\mu = -1.8011$ </center> </td> 
-</tr>
-</table>
+Budżet określony przez funkcję MS wyniósł `1213` wywołań funkcji.
 
-![](plots/violin/2-d Michalewicz Function (m = 10).png)
+![](plots/multi_start/2-d Michalewicz Function (m = 10).png)
+
+![](plots/pure_random_search/2-d Michalewicz Function (m = 10).png)
+
+![](plots/genetic_algorithm/2-d Michalewicz Function (m = 10).png)
+
+|                                                                               |                                                                                      |                                                                                     |
+|-----------------------|-------------------------|-------------------------|
+| ![](plots/violin/multi_start/2-d%20Michalewicz%20Function%20(m%20=%2010).png) | ![](plots/violin/pure_random_search/2-d%20Michalewicz%20Function%20(m%20=%2010).png) | ![](plots/violin/genetic_algorithm/2-d%20Michalewicz%20Function%20(m%20=%2010).png) |
+| $\mu$ = -1.8013                                                               | $\mu$ = -1.7357                                                                      | $\mu$ = -1.8011                                                                     |
+
+![](plots/violin/2-d%20Michalewicz%20Function%20(m%20=%2010).png)
+
+Analizując wykres, uwydatniają się znaczące różnice między algorytmem poszukiwania przypadkowego a pozostałymi dwoma metodami. Obszar wyników dla metody przypadkowej jest znacznie szerszy, a osiągane wartości są wyraźnie większe. Jednakże, rozkład tych wyników koncentruje się głównie wokół dolnej granicy obszaru.
+
+W przypadku algorytmu genetycznego zauważamy bardzo wąski wykres, gdzie praktycznie wszystkie wartości są skondensowane w jednym miejscu, z wyjątkiem kilku punktów odstających od reszty. To świadczy o wyraźnej koncentracji wyników w pewnym obszarze, co może sugerować wysoką spójność rezultatów, choć istnieją punkty wyjątkowe.
+
+Natomiast algorytm wielokrotnego startu wyróżnia się najwęższym obszarem wyników i najbardziej równomiernym ich rozkładem. To sugeruje, że rezultaty tej metody są stabilne i jednocześnie charakteryzują się pewnym stopniem równomierności.
 
 ### Funkcja Michalewicza 10D
-Budżet określony przez funkcję MS wyniósł `4849` wywołań funkcji.  
 
-<table>
-<tr>
-  <td> <img src="plots/violin/multi_start/10-d Michalewicz Function (m = 10).png"/> </td>
-  <td> <img src="plots/violin/pure_random_search/10-d Michalewicz Function (m = 10).png"/> </td>
-  <td> <img src="plots/violin/genetic_algorithm/10-d Michalewicz Function (m = 10).png"/> </td>
-</tr>
-<tr>
-  <td> <center> $\mu = -7.0677$ </center> </td> 
-  <td> <center> $\mu = -4.4816$ </center> </td> 
-  <td> <center> $\mu = -5.0698$ </center> </td> 
-</tr>
-</table>
+Budżet określony przez funkcję MS wyniósł `4849` wywołań funkcji.
 
-![](plots/violin/10-d Michalewicz Function (m = 10).png)
+![](plots/multi_start/10-d Michalewicz Function (m = 10).png)
+
+![](plots/pure_random_search/10-d Michalewicz Function (m = 10).png)
+
+![](plots/genetic_algorithm/10-d Michalewicz Function (m = 10).png)
+
+|                                                                                |                                                                                       |                                                                                      |
+|-----------------------|-------------------------|-------------------------|
+| ![](plots/violin/multi_start/10-d%20Michalewicz%20Function%20(m%20=%2010).png) | ![](plots/violin/pure_random_search/10-d%20Michalewicz%20Function%20(m%20=%2010).png) | ![](plots/violin/genetic_algorithm/10-d%20Michalewicz%20Function%20(m%20=%2010).png) |
+| $\mu$ = -7.0677                                                                | $\mu$ = -4.4816                                                                       | $\mu$ = -5.0698                                                                      |
+
+![](plots/violin/10-d%20Michalewicz%20Function%20(m%20=%2010).png)
+
+Analizując wykres, zwraca uwagę, że algorytm genetyczny prezentuje najszerszy obszar wyników, który w większości pokrywa się z obszarami pozostałych metod. Niemniej jednak, większość tych wyników jest skoncentrowana w jednym miejscu, z pojedynczymi punktami odbiegającymi od głównej masy rezultatów.
+
+Podobny charakter równomiernego rozkładu w wąskim obszarze obserwujemy również w przypadku algorytmu poszukiwania przypadkowego. Choć jego wyniki są równomiernie rozłożone, to jednak istnieją pojedyncze wartości, które odbiegają od reszty, co dodaje pewnej dynamiki i różnorodności w rezultatach.
+
+W odróżnieniu od powyższych, metoda wielokrotnego startu wyróżnia się rezultatami znacznie mniejszymi, bardziej rozproszonymi po całym obszarze. To sugeruje, że choć rezultaty tej metody są zróżnicowane, to jednak osiągane wartości są istotnie mniejsze, co nadaje jej unikalny charakter w porównaniu do pozostałych podejść.
 
 ### Funkcja Michalewicza 20D
-Budżet określony przez funkcję MS wyniósł `6498` wywołań funkcji.  
 
-<table>
-<tr>
-  <td> <img src="plots/violin/multi_start/20-d Michalewicz Function (m = 10).png"/> </td>
-  <td> <img src="plots/violin/pure_random_search/20-d Michalewicz Function (m = 10).png"/> </td>
-  <td> <img src="plots/violin/genetic_algorithm/20-d Michalewicz Function (m = 10).png"/> </td>
-</tr>
-<tr>
-  <td> <center> $\mu = -11.1719$ </center> </td> 
-  <td> <center> $\mu = -6.8647$ </center> </td> 
-  <td> <center> $\mu = -7.3865$ </center> </td> 
-</tr>
-</table>
+Budżet określony przez funkcję MS wyniósł `6498` wywołań funkcji.
 
-![](plots/violin/20-d Michalewicz Function (m = 10).png)
+![](plots/multi_start/20-d Michalewicz Function (m = 10).png)
+
+![](plots/pure_random_search/20-d Michalewicz Function (m = 10).png)
+
+![](plots/genetic_algorithm/20-d Michalewicz Function (m = 10).png)
+
+|                                                                                |                                                                                       |                                                                                      |
+|-----------------------|-------------------------|-------------------------|
+| ![](plots/violin/multi_start/20-d%20Michalewicz%20Function%20(m%20=%2010).png) | ![](plots/violin/pure_random_search/20-d%20Michalewicz%20Function%20(m%20=%2010).png) | ![](plots/violin/genetic_algorithm/20-d%20Michalewicz%20Function%20(m%20=%2010).png) |
+| $\mu$ = -11.1719                                                               | $\mu$ = -6.8647                                                                       | $\mu$ = -7.3865                                                                      |
+
+![](plots/violin/20-d%20Michalewicz%20Function%20(m%20=%2010).png)
+
+Przy analizie wykresu zauważamy, że obszar wyników algorytmu genetycznego jest najbardziej rozległy, pokrywając się w dużej mierze z rezultatami innych metod. Niemniej jednak, większość tych wyników jest skupiona w jednym obszarze, jedynie z pojedynczymi odstępstwami, co nadaje temu algorytmowi charakterystyczny charakter.
+
+W przypadku algorytmu poszukiwania przypadkowego obserwujemy równomierny rozkład wyników w wąskim obszarze, jednak warto zaznaczyć, że te rezultaty są bardziej skoncentrowane w okolicy górnej granicy obszaru. Pojedyncze wartości odbiegają od reszty, wprowadzając pewne zróżnicowanie i dynamikę w rezultatach.
+
+W odniesieniu do metody wielokrotnego startu, rezultaty są istotnie mniejsze i bardziej rozproszone po całym obszarze. To podkreśla, że choć wyniki tej metody są zróżnicowane, to ich wartości są niższe.
