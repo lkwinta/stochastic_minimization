@@ -11,29 +11,29 @@ author:
 
 ### Poszukiwanie przypadkowe (Pure Random Search - PRS)
 
-Algorytm polega na losowaniu punktów z kostki z rozkładu jednostajnego. Po kolei losuję punkty dla każdej współrzędnej z wymiaru dziedziny analizowanej funkcji. Następnie obliczam wartość funkcji w wylosowanym punkcie i sprawdzam czy jest ona mniejsza od dotychczasowego minimum. Jeśli tak, to zapisuję nowe minimum. Do losowania punktów użyłem funkcji `runif` - dostępnej w środowisku R.
+Algorytm polega na losowaniu punktów z kostki z rozkładu jednostajnego. Po kolei losujemy punkty dla każdej współrzędnej z wymiaru dziedziny analizowanej funkcji. Następnie obliczamy wartość funkcji w wylosowanym punkcie i sprawdzamy czy jest ona mniejsza od dotychczasowego minimum. Jeśli tak, to zapisujemy nowe minimum. Do losowania punktów użyliśmy funkcji `runif` - dostępnej w środowisku R.
 
 ### Metoda wielokrotnego startu (Multi-Start - MS)
 
-Algorytm polega na wielokrotnym uruchamianiu algorytmu optymalizacji z różnych punktów startowych. W naszym przypadku skorzystałem z funkcji `optim` ze środowiska R ustawiając ją aby korzystała z algorytmu `L-BFGS-B`. Punkty startowe losuję tak jak poprzednio za pomocą funkcji `runif`.
+Algorytm polega na wielokrotnym uruchamianiu algorytmu optymalizacji z różnych punktów startowych. W naszym przypadku skorzystaliśmy z funkcji `optim` ze środowiska R ustawiając ją aby korzystała z algorytmu `L-BFGS-B`. Punkty startowe losujemy tak jak poprzednio za pomocą funkcji `runif`.
 
 ### Algorytm Genetyczny (GA)
 
-Do przetestowania tego algorytmu użyłem implementacji z pakietu `ecr` . Do mutowania populacji używałem algorytmu mutowania Gaussa, z odchyleniem standardowym $\sigma = 1.5$. Jako startową liczbę populacji wybrałem `100`, a wzrost jako `5`.
+Do przetestowania tego algorytmu użyliśmy implementacji z pakietu `ecr` . Do mutowania populacji używaliśmy algorytmu mutowania Gaussa, z odchyleniem standardowym $\sigma = 1.5$. Jako startową liczbę populacji wybraliśmy `100`, a wzrost jako `5`.
 
 ## Warunki porównania
 
-Aby porównanie było sprawiedliwe, budżet wywołań funkcji ustawiałem na podstawie ilości wywołań funkcji testowanej w algorytmie MS. Uruchamiałem algorytm `100` razy szukając minimalnej wartości funkcji, jednocześnie sumując liczbę wywołań funkcji przez funkcję `optim`.
+Aby porównanie było sprawiedliwe, budżet wywołań funkcji ustawialiśmy na podstawie ilości wywołań funkcji testowanej w algorytmie MS. Uruchamialiśmy algorytm `100` razy szukając minimalnej wartości funkcji, jednocześnie sumując liczbę wywołań funkcji przez funkcję `optim`.
 
-Wynik każdego z algorytmów uśredniałem, wykonując `50` powtórzeń algorytmu. Zbiór wartości minimalnych wytworzony w ten sposób stanowił następnie podstawę do analizy istotności wyników, sporządzenia wykresów oraz porównania wyników algorytmów.
+Wynik każdego z algorytmów uśrednialiśmy, wykonując `50` powtórzeń algorytmu. Zbiór wartości minimalnych wytworzony w ten sposób stanowił następnie podstawę do analizy istotności wyników, sporządzenia wykresów oraz porównania wyników algorytmów.
 
 ## Testowane funkcje
 
-Jako testowane funkcje wybrałem funkcje z pakietu `smoof`: Ackley'a oraz Rosenbrock'a Funkcje te są funkcjami wielowymiarowymi, co pozwala na przetestowanie algorytmów dla różnych wymiarów dziedziny funkcji. Wybrane do testów wymiary funkcji to `2, 10, 20`.
+Jako testowane funkcje wybraliśmy funkcje z pakietu `smoof`: Ackley'a oraz Rosenbrock'a Funkcje te są funkcjami wielowymiarowymi, co pozwala na przetestowanie algorytmów dla różnych wymiarów dziedziny funkcji. Wybrane do testów wymiary funkcji to `2, 10, 20`.
 
 # Wyniki
 
-Do prezentacji wyników wybrałem wykresy skrzypcowe. Wykresy te pozwalają na łatwe porównanie rozkładów wartości minimalnych funkcji dla każdego z algorytmów. Pod wykresami zawarłem opisy z uzyskanymi wartościami średnimi.
+Do prezentacji wyników wybraliśmy wykresy skrzypcowe. Wykresy te pozwalają na łatwe porównanie rozkładów wartości minimalnych funkcji dla każdego z algorytmów. Pod wykresami zawarliśmy opisy z uzyskanymi wartościami średnimi.
 
 ## Funkcja Ackley'a
 
@@ -240,10 +240,12 @@ mean of x mean of y
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.420, 14.935)$.
 
 ## Funckja Ackley'a 10D
+
 ### Porównanie MS-PRS
+
 Wynik wywołania procedury `t.test`:
 
-```
+```         
 Welch Two Sample t-test
 
 data:  results$data$ms and results$data$prs
@@ -254,13 +256,15 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
 mean of x mean of y 
  17.80261  18.12877 
- ```
- 
+```
+
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i PRS są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(-0.616, -0.037)$.
 
 ### Porównanie MS-GA
+
 Wynik wywołania procedury `t.test`:
-```
+
+```         
 Welch Two Sample t-test
 
 data:  results$data$ms and results$data$ga
@@ -276,9 +280,10 @@ mean of x mean of y
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.134, 14.568)$.
 
 ### Porównanie PRS-GA
+
 Wynik wywołania procedury `t.test`:
 
-```
+```         
 Welch Two Sample t-test
 
 data:  results$data$prs and results$data$ga
@@ -294,10 +299,12 @@ mean of x mean of y
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.420, 14.935)$.
 
 ## Funkcja Ackley'a 20D
+
 ### Porównanie MS-PRS
+
 Wynik wywołania procedury `t.test`:
 
-```
+```         
 Welch Two Sample t-test
 
 data:  results$data$ms and results$data$prs
@@ -313,9 +320,10 @@ mean of x mean of y
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i PRS są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(-1.204, -1.003)$.
 
 ### Porównanie MS-GA
+
 Wynik wywołania procedury `t.test`:
 
-```
+```         
 Welch Two Sample t-test
 
 data:  results$data$ms and results$data$ga
@@ -331,9 +339,10 @@ mean of x mean of y
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(13.728, 14.010)$.
 
 ### Porównanie PRS-GA
+
 Wynik wywołania procedury `t.test`:
 
-```
+```         
 Welch Two Sample t-test
 
 data:  results$data$prs and results$data$ga
@@ -355,7 +364,7 @@ Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA s�
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$ms and results$data$prs
 t = -9.248, df = 49, p-value = 2.525e-12
@@ -374,7 +383,7 @@ Po analizie wyników możemy jednoznacznie stwierdzić, że istnieje istotna ró
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$ms and results$data$ga
 t = -2.0885, df = 49, p-value = 0.04197
@@ -393,7 +402,7 @@ Te wyniki sugerują, że istnieje statystycznie istotna różnica między średn
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$prs and results$data$ga
 t = 9.1043, df = 49.362, p-value = 3.855e-12
@@ -414,7 +423,7 @@ Wyniki te wskazują na istotną różnicę między średnimi wynikami PRS i GA. 
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$ms and results$data$prs
 t = -23.12, df = 78.832, p-value < 2.2e-16
@@ -433,7 +442,7 @@ Analiza wskazuje na istotną różnicę między średnimi wynikami MS i PRS. Prz
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$ms and results$data$ga
 t = -11.872, df = 94.012, p-value < 2.2e-16
@@ -452,7 +461,7 @@ Analiza wskazuje na istotną różnicę między średnimi wynikami MS i GA. Prze
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$prs and results$data$ga
 t = 5.8082, df = 69.864, p-value = 1.711e-07
@@ -473,7 +482,7 @@ Analiza wskazuje na istotną różnicę między średnimi wynikami PRS i GA. Prz
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$ms and results$data$prs
 t = -29.187, df = 73.316, p-value < 2.2e-16
@@ -492,7 +501,7 @@ Analiza wskazuje na istotną różnicę między średnimi wynikami MS i PRS. Prz
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$ms and results$data$ga
 t = -22.88, df = 97.147, p-value < 2.2e-16
@@ -511,7 +520,7 @@ Analiza wskazuje na istotną różnicę między średnimi wynikami MS i GA. Prze
 Wynik wywołania procedury `t.test`:
 
 ```         
-	Welch Two Sample t-test
+    Welch Two Sample t-test
 
 data:  results$data$prs and results$data$ga
 t = 1.8112, df = 77.487, p-value = 0.07399
@@ -523,4 +532,3 @@ mean of x mean of y
 ```
 
 Analiza wskazuje, że nie ma istotnej różnicy między średnimi wynikami PRS i GA. Przedział ufności dla różnicy średnich wynosi od -0.02455807 do 0.51916259, co potwierdza, że różnica ta nie jest statystycznie znacząca.
-
