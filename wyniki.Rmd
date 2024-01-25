@@ -175,3 +175,59 @@ Przy analizie wykresu zauważamy, że obszar wyników algorytmu genetycznego jes
 W przypadku algorytmu poszukiwania przypadkowego obserwujemy równomierny rozkład wyników w wąskim obszarze, jednak warto zaznaczyć, że te rezultaty są bardziej skoncentrowane w okolicy górnej granicy obszaru. Pojedyncze wartości odbiegają od reszty, wprowadzając pewne zróżnicowanie i dynamikę w rezultatach.
 
 W odniesieniu do metody wielokrotnego startu, rezultaty są istotnie mniejsze i bardziej rozproszone po całym obszarze. To podkreśla, że choć wyniki tej metody są zróżnicowane, to ich wartości są niższe.
+
+# Porównanie istotności wyników
+
+Zdecydowaliśmy się na wykonanie porównań istotności wyników jako porównanie wyników każdego algorytmu z każdym w dla każdej funkcji z każdym wymiarem. Użyliśmy funkcji `t.test(wyniki1, wyniki2)`. Wybraliśmy
+test $T$ studenta dlatego, że nie znamy wariancji populacji. Testy wykonywaliśmy na poziomie istotności
+$1 - \alpha = 0.95$. Sprawdzaliśmy czy algorytmy dają istotnie różne/takie same wyniki.\\
+Jako hipotezy przyjęliśmy:
+\[ H_0: \mu_1 = \mu_2 \]
+\[ H_1: \mu_1 \neq \mu_2\]
+
+## Funkcja Ackley'a 2D
+### Porównanie MS-PRS
+Wynik wywołania procedury `t.test`:
+```
+Welch Two Sample t-test
+
+data:  results$data$ms and results$data$prs
+t = -7.2819, df = 74.264, p-value = 2.872e-10
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.292511 -1.877831
+sample estimates:
+mean of x mean of y 
+ 1.378329  3.963500 
+```
+
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i PRS są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(-3.293, -1.878)$.
+
+### Porównanie MS-GA
+Wynik wywołania procedury `t.test`:
+```
+Welch Two Sample t-test
+
+data:  results$data$ms and results$data$ga
+t = 131.71, df = 85.626, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 14.13444 14.56768
+sample estimates:
+mean of x mean of y 
+17.802609  3.451551 
+```
+### Porównanie PRS-GA
+Wynik wywołania procedury `t.test`:
+```
+Welch Two Sample t-test
+
+data:  results$data$prs and results$data$ga
+t = 113.46, df = 74.59, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 14.41950 14.93494
+sample estimates:
+mean of x mean of y 
+18.128770  3.451551 
+```
