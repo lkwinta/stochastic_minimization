@@ -217,6 +217,9 @@ sample estimates:
 mean of x mean of y 
 17.802609  3.451551 
 ```
+
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.134, 14.568)$.
+
 ### Porównanie PRS-GA
 Wynik wywołania procedury `t.test`:
 ```
@@ -231,3 +234,115 @@ sample estimates:
 mean of x mean of y 
 18.128770  3.451551 
 ```
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.420, 14.935)$.
+
+## Funckja Ackley'a 10D
+### Porównanie MS-PRS
+Wynik wywołania procedury `t.test`:
+
+```
+Welch Two Sample t-test
+
+data:  results$data$ms and results$data$prs
+t = -2.2376, df = 93.125, p-value = 0.02763
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.61561562 -0.03670669
+sample estimates:
+mean of x mean of y 
+ 17.80261  18.12877 
+ ```
+ 
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i PRS są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(-0.616, -0.037)$.
+
+### Porównanie MS-GA
+Wynik wywołania procedury `t.test`:
+```
+Welch Two Sample t-test
+
+data:  results$data$ms and results$data$ga
+t = 131.71, df = 85.626, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 14.13444 14.56768
+sample estimates:
+mean of x mean of y 
+17.802609  3.451551 
+```
+
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.134, 14.568)$.
+
+### Porównanie PRS-GA
+Wynik wywołania procedury `t.test`:
+
+```
+Welch Two Sample t-test
+
+data:  results$data$prs and results$data$ga
+t = 113.46, df = 74.59, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 14.41950 14.93494
+sample estimates:
+mean of x mean of y 
+18.128770  3.451551 
+```
+
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.420, 14.935)$.
+
+## Funkcja Ackley'a 20D
+### Porównanie MS-PRS
+Wynik wywołania procedury `t.test`:
+
+```
+Welch Two Sample t-test
+
+data:  results$data$ms and results$data$prs
+t = -21.77, df = 89.267, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.204161 -1.002742
+sample estimates:
+mean of x mean of y 
+ 18.67610  19.77955 
+```
+
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i PRS są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(-1.204, -1.003)$.
+
+### Porównanie MS-GA
+Wynik wywołania procedury `t.test`:
+
+
+```
+Welch Two Sample t-test
+
+data:  results$data$ms and results$data$ga
+t = 195.95, df = 69.047, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 13.72774 14.01013
+sample estimates:
+mean of x mean of y 
+ 18.67610   4.80716 
+```
+
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(13.728, 14.010)$.
+
+### Porównanie PRS-GA
+Wynik wywołania procedury `t.test`:
+
+```
+Welch Two Sample t-test
+
+data:  results$data$prs and results$data$ga
+t = 196.38, df = 83.317, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 14.82075 15.12402
+sample estimates:
+mean of x mean of y 
+ 19.77955   4.80716 
+```
+
+Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.821, 15.124)$.
+
