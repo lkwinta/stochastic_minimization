@@ -218,11 +218,8 @@ mean of x mean of y
 17.802609  3.451551 
 ```
 
-<<<<<<< HEAD
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.134, 14.568)$.
 
-=======
->>>>>>> 6aa4edadd6f7a9cfafd4b435d1f6a0e56112ed4b
 ### Porównanie PRS-GA
 
 Wynik wywołania procedury `t.test`:
@@ -239,7 +236,7 @@ sample estimates:
 mean of x mean of y 
 18.128770  3.451551 
 ```
-<<<<<<< HEAD
+
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.420, 14.935)$.
 
 ## Funckja Ackley'a 10D
@@ -318,7 +315,6 @@ Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i PRS s�
 ### Porównanie MS-GA
 Wynik wywołania procedury `t.test`:
 
-
 ```
 Welch Two Sample t-test
 
@@ -351,8 +347,6 @@ mean of x mean of y
 ```
 
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów PRS i GA są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(14.821, 15.124)$.
-
-=======
 
 ## Funkcja Michalewicza 2D
 
@@ -529,4 +523,4 @@ mean of x mean of y
 ```
 
 Analiza wskazuje, że nie ma istotnej różnicy między średnimi wynikami PRS i GA. Przedział ufności dla różnicy średnich wynosi od -0.02455807 do 0.51916259, co potwierdza, że różnica ta nie jest statystycznie znacząca.
->>>>>>> 6aa4edadd6f7a9cfafd4b435d1f6a0e56112ed4b
+
