@@ -9,7 +9,7 @@ dimensions <- list(2, 10, 20)
 
 functions <- list(
   makeAckleyFunction,
-  makeRosenbrockFunction
+  makeMichalewiczFunction
 )
 
 test_function <- function(smoof_function) {
@@ -21,6 +21,14 @@ test_function <- function(smoof_function) {
   ga_results <- get_average_result_ga(smoof_function, budget, N)
   
   # -------------- BOX PLOTS --------------
+  png(file=sprintf("plots/boxplot/%s.png", function_name), width=800, height=600)
+  boxplot(ms_results$data, prs_results$data, ga_results$data, 
+          names=c("Multi-start", "Pure random search", "Genetic algorithm"),
+          main=function_name,
+          ylab="Minimum function value",
+          col=c("red", "green", "blue"))
+  dev.off()
+  
   png(file=sprintf("plots/boxplot/multi_start/%s.png", function_name), width=450, height=600)
   boxplot(ms_results$data, names="Multi-start",
           main=sprintf("Multi-start: %s", function_name),
@@ -43,6 +51,14 @@ test_function <- function(smoof_function) {
   dev.off()
   
   # -------------- VIOLIN PLOTS --------------
+  png(file=sprintf("plots/violin/%s.png", function_name), width=800, height=600)
+  vioplot(ms_results$data, prs_results$data, ga_results$data, 
+          names=c("Multi-start", "Pure random search", "Genetic algorithm"),
+          main=function_name,
+          ylab="Minimum function value",
+          col=c("red", "green", "blue"))
+  dev.off()
+  
   png(file=sprintf("plots/violin/multi_start/%s.png", function_name), width=450, height=600)
   vioplot(ms_results$data, names="Multi-start",
           main=sprintf("Multi-start: %s", function_name),
