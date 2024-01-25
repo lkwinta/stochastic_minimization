@@ -41,11 +41,11 @@ Do prezentacji wyników wybrałem wykresy skrzypcowe. Wykresy te pozwalają na �
 
 Budżet określony przez funkcję MS wyniósł `1380` wywołań funkcji.
 
-![](plots/multi_start/2-d Ackley Function.png){width="800"}
+![](plots/multi_start/2-d%20Ackley%20Function.png){width="800"}
 
-![](plots/pure_random_search/2-d Ackley Function.png)
+![](plots/pure_random_search/2-d%20Ackley%20Function.png)
 
-![](plots/genetic_algorithm/2-d Ackley Function.png)
+![](plots/genetic_algorithm/2-d%20Ackley%20Function.png)
 
 |                                                           |                                                                  |                                                                 |
 |-----------------------|-------------------------|-------------------------|
@@ -64,11 +64,11 @@ Rozpatrując metody pod kątem położenia i rozproszenia wyników, możemy rów
 
 Budżet określony przez funkcję MS wyniósł `1453` wywołań funkcji.
 
-![](plots/multi_start/10-d Ackley Function.png)
+![](plots/multi_start/10-d%20Ackley%20Function.png)
 
-![](plots/pure_random_search/10-d Ackley Function.png)
+![](plots/pure_random_search/10-d%20Ackley%20Function.png)
 
-![](plots/genetic_algorithm/10-d Ackley Function.png)
+![](plots/genetic_algorithm/10-d%20Ackley%20Function.png)
 
 |                                                            |                                                                   |                                                                  |
 |-----------------------|-------------------------|-------------------------|
@@ -87,11 +87,11 @@ Dodatkowo, zauważamy, że metoda poszukiwania przypadkowego prezentuje się jak
 
 Budżet określony przez funkcję MS wyniósł `1425` wywołań funkcji.
 
-![](plots/multi_start/20-d Ackley Function.png)
+![](plots/multi_start/20-d%20Ackley%20Function.png)
 
-![](plots/pure_random_search/20-d Ackley Function.png)
+![](plots/pure_random_search/20-d%20Ackley%20Function.png)
 
-![](plots/genetic_algorithm/20-d Ackley Function.png)
+![](plots/genetic_algorithm/20-d%20Ackley%20Function.png)
 
 |                                                            |                                                                   |                                                                  |
 |-----------------------|-------------------------|-------------------------|
@@ -111,11 +111,11 @@ W przypadku metody wielokrotnego startu i metody przeszukiwania, zauważamy pewn
 
 Budżet określony przez funkcję MS wyniósł `1213` wywołań funkcji.
 
-![](plots/multi_start/2-d Michalewicz Function (m = 10).png)
+![](plots/multi_start/2-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
-![](plots/pure_random_search/2-d Michalewicz Function (m = 10).png)
+![](plots/pure_random_search/2-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
-![](plots/genetic_algorithm/2-d Michalewicz Function (m = 10).png)
+![](plots/genetic_algorithm/2-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
 |                                                                               |                                                                                      |                                                                                     |
 |-----------------------|-------------------------|-------------------------|
@@ -134,11 +134,11 @@ Natomiast algorytm wielokrotnego startu wyróżnia się najwęższym obszarem wy
 
 Budżet określony przez funkcję MS wyniósł `4849` wywołań funkcji.
 
-![](plots/multi_start/10-d Michalewicz Function (m = 10).png)
+![](plots/multi_start/10-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
-![](plots/pure_random_search/10-d Michalewicz Function (m = 10).png)
+![](plots/pure_random_search/10-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
-![](plots/genetic_algorithm/10-d Michalewicz Function (m = 10).png)
+![](plots/genetic_algorithm/10-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
 |                                                                                |                                                                                       |                                                                                      |
 |-----------------------|-------------------------|-------------------------|
@@ -157,11 +157,11 @@ W odróżnieniu od powyższych, metoda wielokrotnego startu wyróżnia się rezu
 
 Budżet określony przez funkcję MS wyniósł `6498` wywołań funkcji.
 
-![](plots/multi_start/20-d Michalewicz Function (m = 10).png)
+![](plots/multi_start/20-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
-![](plots/pure_random_search/20-d Michalewicz Function (m = 10).png)
+![](plots/pure_random_search/20-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
-![](plots/genetic_algorithm/20-d Michalewicz Function (m = 10).png)
+![](plots/genetic_algorithm/20-d%20Michalewicz%20Function%20(m%20=%2010).png)
 
 |                                                                                |                                                                                       |                                                                                      |
 |-----------------------|-------------------------|-------------------------|
@@ -178,17 +178,15 @@ W odniesieniu do metody wielokrotnego startu, rezultaty są istotnie mniejsze i 
 
 # Porównanie istotności wyników
 
-Zdecydowaliśmy się na wykonanie porównań istotności wyników jako porównanie wyników każdego algorytmu z każdym w dla każdej funkcji z każdym wymiarem. Użyliśmy funkcji `t.test(wyniki1, wyniki2)`. Wybraliśmy
-test $T$ studenta dlatego, że nie znamy wariancji populacji. Testy wykonywaliśmy na poziomie istotności
-$1 - \alpha = 0.95$. Sprawdzaliśmy czy algorytmy dają istotnie różne/takie same wyniki.\\
-Jako hipotezy przyjęliśmy:
-\[ H_0: \mu_1 = \mu_2 \]
-\[ H_1: \mu_1 \neq \mu_2\]
+Zdecydowaliśmy się na wykonanie porównań istotności wyników jako porównanie wyników każdego algorytmu z każdym w dla każdej funkcji z każdym wymiarem. Użyliśmy funkcji `t.test(wyniki1, wyniki2)`. Wybraliśmy test $T$ studenta dlatego, że nie znamy wariancji populacji. Testy wykonywaliśmy na poziomie istotności $1 - \alpha = 0.95$. Sprawdzaliśmy czy algorytmy dają istotnie różne/takie same wyniki.\\ Jako hipotezy przyjęliśmy: $$ H_0: \mu_1 = \mu_2 $$ $$ H_1: \mu_1 \neq \mu_2$$
 
 ## Funkcja Ackley'a 2D
+
 ### Porównanie MS-PRS
+
 Wynik wywołania procedury `t.test`:
-```
+
+```         
 Welch Two Sample t-test
 
 data:  results$data$ms and results$data$prs
@@ -204,8 +202,10 @@ mean of x mean of y
 Analizując wynik testu, możemy stwierdzić, że wyniki algorytmów MS i PRS są istotnie różne. Na $95%$ poziomie istotności możemy stwierdzić, że różnica średnich wyników jest z przedziału $(-3.293, -1.878)$.
 
 ### Porównanie MS-GA
+
 Wynik wywołania procedury `t.test`:
-```
+
+```         
 Welch Two Sample t-test
 
 data:  results$data$ms and results$data$ga
@@ -217,9 +217,12 @@ sample estimates:
 mean of x mean of y 
 17.802609  3.451551 
 ```
+
 ### Porównanie PRS-GA
+
 Wynik wywołania procedury `t.test`:
-```
+
+```         
 Welch Two Sample t-test
 
 data:  results$data$prs and results$data$ga
@@ -231,3 +234,179 @@ sample estimates:
 mean of x mean of y 
 18.128770  3.451551 
 ```
+
+## Funkcja Michalewicza 2D
+
+### Porównanie MS-PRS
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$ms and results$data$prs
+t = -9.248, df = 49, p-value = 2.525e-12
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.07917092 -0.05090549
+sample estimates:
+mean of x mean of y 
+-1.801303 -1.736265 
+```
+
+Po analizie wyników możemy jednoznacznie stwierdzić, że istnieje istotna różnica między średnimi wynikami obu metod. Przedział ufności dla tej różnicy, wynoszący od -0.07917092 do -0.05090549, jednoznacznie wskazuje, że MS startu osiąga istotnie niższe średnie wyniki w porównaniu do PRS.
+
+### Porównanie MS-GA
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$ms and results$data$ga
+t = -2.0885, df = 49, p-value = 0.04197
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.750590e-03 -3.372231e-05
+sample estimates:
+mean of x mean of y 
+-1.801303 -1.800411 
+```
+
+Te wyniki sugerują, że istnieje statystycznie istotna różnica między średnimi wynikami MS i GA. Przedział ufności dla różnicy średnich wynosi od -1.750590e-03 do -3.372231e-05, co potwierdza, że MS osiąga niższe średnie wyniki w porównaniu do GA.
+
+### Porównanie PRS-GA
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$prs and results$data$ga
+t = 9.1043, df = 49.362, p-value = 3.855e-12
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.04998991 0.07830219
+sample estimates:
+mean of x mean of y 
+-1.736265 -1.800411 
+```
+
+Wyniki te wskazują na istotną różnicę między średnimi wynikami PRS i GA. Przedział ufności dla różnicy średnich wynosi od 0.04998991 do 0.07830219, co potwierdza, że GA osiąga niższe średnie wyniki w porównaniu do PRS.
+
+## Funkcja Michalewicza 10D
+
+### Porównanie MS-PRS
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$ms and results$data$prs
+t = -23.12, df = 78.832, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.812947 -2.366988
+sample estimates:
+mean of x mean of y 
+-7.167895 -4.577928 
+```
+
+Analiza wskazuje na istotną różnicę między średnimi wynikami MS i PRS. Przedział ufności dla różnicy średnich wynosi od -2.812947 do -2.366988, co potwierdza, że MS osiąga znacznie niższe średnie wyniki w porównaniu do PRS.
+
+### Porównanie MS-GA
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$ms and results$data$ga
+t = -11.872, df = 94.012, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.128621 -1.518628
+sample estimates:
+mean of x mean of y 
+-7.167895 -5.344270 
+```
+
+Analiza wskazuje na istotną różnicę między średnimi wynikami MS i GA. Przedział ufności dla różnicy średnich wynosi od -2.128621 do -1.518628, co potwierdza, że MS osiąga znacznie niższe średnie wyniki w porównaniu do GA.
+
+### Porównanie PRS-GA
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$prs and results$data$ga
+t = 5.8082, df = 69.864, p-value = 1.711e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.5031862 1.0294995
+sample estimates:
+mean of x mean of y 
+-4.577928 -5.344270 
+```
+
+Analiza wskazuje na istotną różnicę między średnimi wynikami PRS i GA. Przedział ufności dla różnicy średnich wynosi od 0.5031862 do 1.0294995, co potwierdza, że PRS osiąga wyższe średnie wyniki w porównaniu do GA.
+
+## Funkcja Michalewicza 20D
+
+### Porównanie MS-PRS
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$ms and results$data$prs
+t = -29.187, df = 73.316, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.578394 -3.993131
+sample estimates:
+ mean of x  mean of y 
+-11.363925  -7.078162 
+```
+
+Analiza wskazuje na istotną różnicę między średnimi wynikami MS i PRS. Przedział ufności dla różnicy średnich wynosi od -4.578394 do -3.993131, co potwierdza, że MS osiąga znacznie niższe średnie wyniki w porównaniu do PRS.
+
+### Porównanie MS-GA
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$ms and results$data$ga
+t = -22.88, df = 97.147, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.388770 -3.688151
+sample estimates:
+ mean of x  mean of y 
+-11.363925  -7.325464 
+```
+
+Analiza wskazuje na istotną różnicę między średnimi wynikami MS i GA. Przedział ufności dla różnicy średnich wynosi od -4.388770 do -3.688151, co potwierdza, że MS osiąga znacznie niższe średnie wyniki w porównaniu do GA.
+
+### Porównanie PRS-GA
+
+Wynik wywołania procedury `t.test`:
+
+```         
+	Welch Two Sample t-test
+
+data:  results$data$prs and results$data$ga
+t = 1.8112, df = 77.487, p-value = 0.07399
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.02455807  0.51916259
+sample estimates:
+mean of x mean of y 
+```
+
+Analiza wskazuje, że nie ma istotnej różnicy między średnimi wynikami PRS i GA. Przedział ufności dla różnicy średnich wynosi od -0.02455807 do 0.51916259, co potwierdza, że różnica ta nie jest statystycznie znacząca.
